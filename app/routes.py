@@ -1,6 +1,6 @@
 from app import app, db
 from app.models import User
-from flask import jsonify
+from flask import jsonify, request
 
 @app.route('/')
 @app.route('/index')
@@ -19,3 +19,15 @@ def getUser(id):
   user = User.query.get(id)
   print(user)
   return jsonify(user.to_dict())
+
+@app.route('/user', methods=['POST'])
+def creatUser():
+  username = request.form.get('username')
+  email = request.form.get('email')
+  print(username)
+  print(email)
+  u = User(username = username, email = email)
+  db.session.add(u)
+  db.session.commit()
+  print(u)
+  return jsonify(u.to_dict())
