@@ -24,8 +24,6 @@ def getUser(id):
 def creatUser():
   username = request.form.get('username')
   email = request.form.get('email')
-  print(username)
-  print(email)
   u = User(username = username, email = email)
   db.session.add(u)
   db.session.commit()
