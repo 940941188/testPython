@@ -6,5 +6,8 @@
 dist
 build
 
+#db
+*.db
+
 #venv
 venv
